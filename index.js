@@ -1,3 +1,4 @@
+// There's a login issue with SendGrid, so I chose MailGun instead. Please note that only verified email addresses can receive emails.
 import "dotenv/config";
 import fetch from "node-fetch";
 import formData from "form-data";
@@ -70,3 +71,15 @@ const sendEmails = async (items) => {
   const items = await fetchMondayBoardData();
   await sendEmails(items);
 })();
+
+// code in railway.toml
+
+// [build]
+// buildCommand = "npm install"
+
+// [deploy]
+// command="node index.js"
+
+// [cron]
+// schedule = "0 */4 * * 1-5"
+// command="node index.js"
