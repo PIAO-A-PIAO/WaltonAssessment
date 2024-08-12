@@ -1,4 +1,6 @@
-// There's a login issue with SendGrid, so I chose MailGun instead. Please note that only verified email addresses can receive emails.
+// There's a login issue with SendGrid, so I chose MailGun instead.
+// Please note that only verified email addresses can receive emails.
+
 import "dotenv/config";
 import fetch from "node-fetch";
 import formData from "form-data";
@@ -57,10 +59,7 @@ const sendEmails = async (items) => {
 
       await mg.messages
         .create(process.env.MAILGUN_DOMAIN, emailData)
-        .then((msg) => console.log("Email sent successfully!"))
-        .catch((err) =>
-          console.error("Error:", err)
-        );
+        .catch((err) => console.error("Error:", err));
     }
   } catch (error) {
     console.error("Error: ", error);
@@ -72,7 +71,7 @@ const sendEmails = async (items) => {
   await sendEmails(items);
 })();
 
-// code in railway.toml
+// Code in railway.toml
 
 // [build]
 // buildCommand = "npm install"
